@@ -30,7 +30,7 @@ unsigned long requestInterval = 60000;
 // --------------------------------
 
 
-unsigned long lastRequest;
+static unsigned long lastRequest;
 
 int subsCount; 
 int viewCount; 
@@ -51,7 +51,7 @@ void setup() {
 }
 
 void loop() {
-  if (millis() > lastRequest + requestInterval)  {
+  if ( millis() - lastRequest > requestInterval ) {
       // refresh Values from YouTube API
       refreshSubscriber();
 
